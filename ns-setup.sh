@@ -4,7 +4,7 @@ sudo docker run hello-world
 
 echo Итак, немного настроек
 echo
-echo Введите имя домена, на котором ваш Nightscout будет доступен:
+echo Введите имя пациента:
 read title
 echo "NS_TITLE=$title" >> .env
 echo
