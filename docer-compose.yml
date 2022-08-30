@@ -9,7 +9,7 @@ services:
 
   nightscout:
     image: nightscout/cgm-remote-monitor:latest
-    container_name: nightscout1
+    container_name: nightscout
     restart: always
     depends_on:
       - mongo
