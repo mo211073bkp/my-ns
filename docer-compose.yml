@@ -18,7 +18,7 @@ services:
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       API_SECRET: qwertyuiopas
-      CUSTOM_TITLE: CGM_USER
+      CUSTOM_TITLE: 1234QWERTY
           
   app:
     image: 'jc21/nginx-proxy-manager:latest'
