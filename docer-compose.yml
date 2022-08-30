@@ -32,7 +32,7 @@ services:
       AUTH_DEFAULT_ROLES: denied
 
   app:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:latest
     restart: unless-stopped
     ports:
       - '80:80'
