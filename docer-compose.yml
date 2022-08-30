@@ -4,6 +4,7 @@ services:
   mongo:
     image: mongo:4.4
     restart: always
+    container_name: mongo
     volumes:
       - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
 
@@ -13,24 +14,16 @@ services:
     restart: always
     depends_on:
       - mongo
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nightscout.rule=Host(`${NS_DOMAIN}`)'
+      - 'traefik.http.routers.nightscout.entrypoints=web'
     environment:
       NODE_ENV: production
-      TZ: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
-      API_SECRET: qwertyuiopas
-      CUSTOM_TITLE: User_CGM
-      THEME: colors
-      BG_HIGH: 13
-      BG_TARGET_TOP: 9
-      BG_TARGET_BOTTOM: 4.3
-      BG_LOW: 4.0
-      SHOW_FORECAST: loop
-      SHOW_PLUGINS: openaps pump cob iob sage cage careportal maker
-      BASAL_RENDER: icicle
-      ENABLE: careportal openaps iob bwp cage basal pump bridge cob loop basal sage override maker alice
-      AUTH_DEFAULT_ROLES: denied
-
+      API_SECRET: ${NS_SECRET}
+      
   app:
     image: jc21/nginx-proxy-manager:latest
     restart: unless-stopped
