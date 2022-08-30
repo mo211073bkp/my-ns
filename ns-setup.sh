@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo docker run hello-world
+sudo systemctl status docker
 
 #Ставим и запускаем Portainer
 docker volume create portainer_data
@@ -19,8 +20,8 @@ read secret
 echo "NS_SECRET=$secret" >> .env
 echo
 
-curl https://raw.githubusercontent.com/mo211073bkp/test/main/docker-compose.yml --output docker-compose.yml
-docker-compose up -d
+#curl https://raw.githubusercontent.com/mo211073bkp/test/main/docker-compose.yml --output docker-compose.yml
+#docker-compose up -d
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
 echo "secret: $secret"
