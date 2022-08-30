@@ -14,11 +14,7 @@ services:
     restart: always
     depends_on:
       - mongo
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.nightscout.rule=Host(`${NS_DOMAIN}`)'
-      - 'traefik.http.routers.nightscout.entrypoints=web'
-    environment:
+      environment:
       NODE_ENV: production
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
