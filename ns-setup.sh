@@ -16,7 +16,7 @@ echo "NS_SECRET=$secret" >> .env
 echo
 
 curl https://raw.githubusercontent.com/mo211073bkp/test/docker-compose.yml --output docker-compose.yml
-sudo docker compose up -d
+sudo docker-compose up -d
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
 echo "secret: $secret"
