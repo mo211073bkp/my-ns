@@ -37,14 +37,15 @@ read title
 echo echo "NS_TITLE=$title" >> .env
 echo
 
-curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/mine/docker-compose.yml --output docker-compose.yml
-sudo docker-compose up -d
+#curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/mine/docker-compose.yml --output docker-compose.yml
+#sudo docker-compose up -d
+
+apt install nano
+nano docker-compose.yml
 
 sudo docker volume create portainer_data
 sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.11.1
 sudo docker ps
-
-apt install nano
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
 echo "secret: $secret"
