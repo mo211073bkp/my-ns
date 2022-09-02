@@ -16,9 +16,9 @@ services:
       - mongo
     environment:
       NODE_ENV: production
-      TZ: Etc/UTC
+      TZ: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
-      MONGO_CONNECTION: mongodb://mongo:27017/ns
+      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       API_SECRET: ${NS_SECRET}
       CUSTOM_TITLE: ${NS_TITLE}
       AUTH_DEFAULT_ROLES: readable
