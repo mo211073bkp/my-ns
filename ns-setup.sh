@@ -20,9 +20,35 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plu
 sudo docker run hello-world
 sudo systemctl status docker
 
+echo Итак, немного настроек
+echo
+echo Введите имя домена, на котором ваш Nightscout будет доступен:
+read domain
+echo "NS_DOMAIN=$domain" >> .env
+echo
+echo
+echo Придумайте и введите APIsecret ключ, 12 символов буквы и цифры:
+read secret
+echo echo "NS_SECRET=$secret" >> .env
+echo
+echo
+echo Введите заголовок Вашего сайта:
+read title
+echo echo "NS_TITLE=$title" >> .env
+echo
+
+curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/mine/docker-compose.yml --output docker-compose.yml
+sudo docker-compose up -d
+
 sudo docker volume create portainer_data
 sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.11.1
 sudo docker ps
 
 apt install nano
+
+echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
+echo "secret: $secret"
+echo
+echo "Адрес Вашего Nightscout (запишите!):"
+echo "domain: $domain"
 
