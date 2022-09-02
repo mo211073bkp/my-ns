@@ -36,7 +36,7 @@ read secret
 echo echo "NS_SECRET=$secret" >> .env
 echo
 echo
-echo Введите APIsecret ключ, 12 символов буквы и цифры:
+echo Введите название Вашей сттраницы Nightscout:
 read title
 echo echo "NS_TITLE=$title" >> .env
 echo
@@ -45,7 +45,6 @@ echo
 
 
 curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/docker-compose.yml --output docker-compose.yml
-
 sudo docker compose up -d
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
