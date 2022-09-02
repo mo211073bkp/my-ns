@@ -1,11 +1,32 @@
 version: '3'
 
-app:
-   image: 'jc21/nginx-proxy-manager:latest'
-   restart: unless-stopped
-   ports:
-     - '80:80'
-     - '81:81'
-     - '443:443'
-   volumes:
-     - ./data:/data
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    volumes:
+      - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
+
+  nightscout:
+    image: nightscout/cgm-remote-monitor:latest
+    container_name: nightscout
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: production
+      timezone: Europe/Moscow
+      INSECURE_USE_HTTP: 'true'
+      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
+      API_SECRET: qwertyuiopas
+     
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencryp
