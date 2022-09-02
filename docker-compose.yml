@@ -1,6 +1,12 @@
 version: '3'
 
 services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    volumes:
+      - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
+
   nightscout:
     image: nightscout/cgm-remote-monitor:latest
     container_name: nightscout
@@ -20,13 +26,12 @@ services:
       # For all other settings, please refer to the Environment section of the README
       # https://github.com/nightscout/cgm-remote-monitor#environment
 
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencryp
+ app:
+   image: 'jc21/nginx-proxy-manager:latest'
+   restart: unless-stopped
+   ports:
+     - '80:80'
+     - '81:81'
+     - '443:443'
+   volumes:
+     - ./data:/data
