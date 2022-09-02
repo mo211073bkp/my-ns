@@ -46,8 +46,8 @@ echo
 
 
 
-curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/docker-compose.yml --output docker-compose.yml
-sudo docker compose up -d
+#curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/docker-compose.yml --output docker-compose.yml
+#sudo docker-compose up -d
 
 echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
 echo "secret: $secret"
