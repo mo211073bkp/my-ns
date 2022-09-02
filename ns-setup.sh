@@ -26,30 +26,3 @@ sudo docker ps
 
 apt install nano
 
-echo Итак, немного настроек
-echo
-echo Введите имя домена, на котором ваш Nightscout будет доступен:
-read domain
-echo "NS_DOMAIN=$domain" >> .env
-echo
-echo
-echo Придумайте и введите APIsecret ключ, 12 символов буквы и цифры:
-read secret
-echo echo "NS_SECRET=$secret" >> .env
-echo
-echo
-echo Введите название Вашей сттраницы Nightscout:
-read title
-echo echo "NS_TITLE=$title" >> .env
-echo
-
-
-
-
-#curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/docker-compose.yml --output docker-compose.yml
-#sudo docker-compose up -d
-
-echo "Ваш секретный ключ для доступа к Nightscout (запишите!):"
-echo "secret: $secret"
-echo "Адрес Вашего Nightscout (запишите!):"
-echo "domain: $domain"
