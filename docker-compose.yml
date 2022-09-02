@@ -4,7 +4,6 @@ services:
   mongo:
     image: mongo:4.4
     restart: always
-    container_name: mongo
     volumes:
       - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
 
@@ -16,19 +15,18 @@ services:
       - mongo
     environment:
       NODE_ENV: production
-      TZ: Europe/Moscow
+      timezone: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
       MONGO_CONNECTION: mongodb://mongo:27017/nightscout
       API_SECRET: qwertyuiopas
-      CUSTOM_TITLE: CGM_USER
-      AUTH_DEFAULT_ROLES: readable
- app:
-   image: 'jc21/nginx-proxy-manager:latest'
-   restart: unless-stopped
-   ports:
-     - '80:80'
-     - '81:81'
-     - '443:443'
-   volumes:
-     - ./data:/data
-     - ./letsencrypt:/etc/letsencryp
+     
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencryp
