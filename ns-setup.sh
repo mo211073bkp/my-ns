@@ -44,7 +44,7 @@ echo
 
 
 
-curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/mine/docker-compose.yml --output docker-compose.yml
+curl https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/docker-compose.yml --output docker-compose.yml
 
 sudo docker compose up -d
 
