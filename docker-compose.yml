@@ -4,6 +4,7 @@ services:
   mongo:
     image: mongo:4.4
     restart: always
+    container_name: mongo
     volumes:
       - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
 
@@ -15,11 +16,11 @@ services:
       - mongo
     environment:
       NODE_ENV: production
-      timezone: Europe/Moscow
       INSECURE_USE_HTTP: 'true'
-      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
+      MONGO_CONNECTION: mongodb://mongo:27017/ns
       API_SECRET: qwertyuiopas
-     
+      
+  
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
