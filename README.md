@@ -9,5 +9,5 @@
 
 ## Process
 1. Зайт в консоль своей VPS
-2. вставить строку: `bash <(wget -qO- https://raw.githubusercontent.com/mo211073bkp/ns-justmara/main/ns-setup.sh)` нажать enter и следовать инструкциям
+2. вставить строку: `bash <(wget -qO- https://raw.githubusercontent.com/mo211073bkp/ns-denis/main/ns-setup.sh)` нажать enter и следовать инструкциям
 3. ура, у вас есть найтскаут
