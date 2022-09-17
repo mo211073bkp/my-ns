@@ -1,0 +1,58 @@
+Установка и настройка Nightscout через Docker и Portainer
+Покупаем сервак.
+создаем Ubuntu+mongodb+Docker
+
+#Ставим и запускаем Portainer
+
+docker volume create portainer_data
+docker pull portainer/portainer-ce:latest
+docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+docker ps
+
+#Ставим nano
+apt install nano
+
+nano docker-compose.yml
+#Всё копируем из своего yml (там nginx+nightscout) и вставляем, затем Ctrl+o Enter, Ctrl+x Enter.
+
+#Запускаем
+docker-compose up -d
+
+#Установим Midnight Commander:
+sudo apt -y install mc
+Для запуска mc: $ mc
+
+###############################
+Можем посмотреть порты открытые: netstat -ntlp | grep LISTEN 
+или ss -ltupn
+##############################
+
+
+
+Заходим на Jino в раздел управление -> перенаправление портов
+внутреннему порту 9443 на котором portainer машина сопоставит внешний порт xxxx, этот порт добавим к имени домена и попадем в Portainer
+внутреннему порту 81 на котором nginx машина сопоставит внешний порт YYY, через него попадем в nginx
+
+#Делаем перезагрузку созданного VPS
+
+#Заходим в Portainer:
+ovz11.j69778748.pqj7n.vps.myjino.ru:49299	
+Имя контейнера поользователя (nightscout-test1) и должно совпадать с имененм бызы этого пользователя. (правим через Duplicate\Edit)
+в разделе Network прописываем IPv4 адрес типа: 172.18.0.10
+заходим в ENV и правим переменные... (можно вставить текст в режиме "advanced_mode"
+затем Deploy
+
+Заходим в контейнер mongodb и тыкаем на always
+
+
+#Заходим в nginx
+ovz11.j69778748.pqj7n.vps.myjino.ru:49302
+
+по умолчанию Email:    admin@example.com  Password: changeme
+
+Заходим в nginx и добавляем новый хост.
+вписываем имя хоста типа 1.darinacgm.ru
+IP тот, что стоит напротив nightscout в Portainer порт указываем 1337 (по умолчанию)
+Ставим галку websocket support
+Переходим во вкладку SSL и по почте, на котороую зареган хост подтягиваем SSL сертификат.
+Галку "Force SSL" ставим.
