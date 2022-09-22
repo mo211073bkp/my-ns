@@ -27,7 +27,7 @@ docker ps
 curl https://raw.githubusercontent.com/mo211073bkp/ns-denis/main/docker-compose.yml --output docker-compose.yml
 sudo docker-compose up -d
 
-#apt install nano
+apt install nano
 
 
 
