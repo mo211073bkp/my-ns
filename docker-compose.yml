@@ -17,7 +17,7 @@ services:
     environment:
       NODE_ENV: production
       INSECURE_USE_HTTP: 'true'
-      MONGO_CONNECTION: mongodb://mongo:27017/nightscout
+      MONGO_CONNECTION: mongodb://mongo:27017/ns
       API_SECRET: qwertyuiopas
       
   
