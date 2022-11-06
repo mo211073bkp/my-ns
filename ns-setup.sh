@@ -1,4 +1,7 @@
 #!/bin/sh
+GREEN='\033[0;32m'
+NORMAL='\033[0m'
+YELLOW='\033[0;33m'
 
 sudo apt-get update
 
@@ -27,7 +30,7 @@ docker ps
 curl https://raw.githubusercontent.com/mo211073bkp/my-ns/main/docker-compose.yml --output docker-compose.yml
 sudo docker-compose up -d
 
+echo -e "$YELLOW Поставим Nano для редактирования"
 apt install nano
 
-
-
+echo -e "$GREEN Установка закончена $NORMAL"
