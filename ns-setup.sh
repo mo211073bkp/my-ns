@@ -17,7 +17,7 @@ echo \
 
 sudo apt-get update
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-sudo docker run hello-world
+#sudo docker run hello-world
 
 sudo docker volume create portainer_data
 docker pull portainer/portainer-ce:latest
