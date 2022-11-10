@@ -30,7 +30,8 @@ docker ps
 curl https://raw.githubusercontent.com/mo211073bkp/my-ns/main/docker-compose.yml --output docker-compose.yml
 sudo docker-compose up -d
 
-echo -e "$YELLOW Поставим Nano для редактирования"
-apt install nano
-
-echo -e "$GREEN Установка закончена $NORMAL"
+#echo -e "$YELLOW Поставим Nano для редактирования"
+#apt install nano
+echo -e "$YELLOW ###############################"
+echo -e "$GREEN ##    Установка закончена    ## "
+echo -e "$YELLOW ############################### $NORMAL"
