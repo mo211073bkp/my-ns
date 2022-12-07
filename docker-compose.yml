@@ -12,6 +12,11 @@ services:
     image: nightscout/cgm-remote-monitor:latest
     container_name: nightscout
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
     depends_on:
       - mongo
     environment:
