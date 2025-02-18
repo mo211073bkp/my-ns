@@ -28,7 +28,7 @@ docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /va
 docker ps
 
 curl https://raw.githubusercontent.com/mo211073bkp/my-ns/main/docker-compose.yml --output docker-compose.yml
-sudo docker-compose up -d
+sudo docker compose up -d
 
 #echo -e "$YELLOW Поставим Nano для редактирования"
 #apt install nano
